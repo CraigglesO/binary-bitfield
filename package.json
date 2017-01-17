@@ -1,0 +1,23 @@
+{
+  "name": "binary-bitfield",
+  "version": "2.0.10",
+  "description": "Binary bitfield system to easily keep track of torrent pieces",
+  "main": "binary-bitfield.js",
+  "scripts": {
+    "test": "echo 'Error: no test specified' && exit 1",
+    "start": "npm run build:live",
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./binary-bitfield.ts"
+  },
+  "author": "Craig OConnor",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/CraigglesO/binary-bitfield.git"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^7.0.0",
+    "nodemon": "^1.11.0",
+    "ts-node": "^2.0.0",
+    "typescript": "^2.1.5"
+  }
+}
