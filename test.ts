@@ -23,13 +23,16 @@ import binaryBitfield from './binary-bitfield';
 
 //let bitfield = new binaryBitfield(9);
 
-let bitfield = new binaryBitfield('c0', '40');
+let bitfield = new binaryBitfield('c0');
 
-let y = Buffer.from('40', 'hex');
+
+let y = Buffer.from('80', 'hex');
 
 bitfield.findNewPieces(y, (result, total) => {
+  console.log('b2: ' ,bitfield);
+  console.log('r2: ' ,result);
+  console.log('t2: ' ,total);
 });
+//console.log(bitfield.set(0));
 
-console.log(bitfield.set(0));
-console.log(bitfield);
-console.log(bitfield.get(1));
+console.log('b1: ' ,bitfield);

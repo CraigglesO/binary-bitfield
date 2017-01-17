@@ -56,7 +56,7 @@ class binaryBitfield {
         }
         this.pieces = (typeof pieces === 'number') ? pieces : this.countPieces(pieces);
         this.bitfield = this.setPieces(this.pieces);
-        this.downloaded = this.totalBitfield = (downloaded)
+        this.downloaded = (downloaded)
             ? this.d2binary(downloaded)
             : this.setZeros(this.pieces);
         this.percent = 0;
@@ -91,7 +91,7 @@ class binaryBitfield {
         while (result.length < 8) {
             result += '0';
         }
-        let addZero = 8 - (result.length % 8);
+        let addZero = (result.length % 8) ? (8 - (result.length % 8)) : 0;
         while (addZero) {
             result += '0';
             addZero--;
@@ -148,22 +148,22 @@ class binaryBitfield {
         while (bits.length < self.bitfield.length) {
             bits += '00000000';
         }
-        for (let i = 0; i < bits.length; i++) {
-            if (self.downloaded[i] === '0' && bits[i] === '1')
-                result += '1';
-            else
-                result += '0';
-            if (bits[i] === '1') {
-                let num = Number(self.totalBitfield[i]);
-                num++;
-                add2total += num;
-            }
-            else
-                add2total += self.totalBitfield[i];
-        }
-        self.totalBitfield = add2total;
         process.nextTick(() => {
-            cb(self.binary2hex(result), self.totalBitfield);
+            for (let i = 0; i < bits.length; i++) {
+                if (self.downloaded[i] === '0' && bits[i] === '1')
+                    result += '1';
+                else
+                    result += '0';
+                if (bits[i] === '1') {
+                    let num = Number(self.downloaded[i]);
+                    num++;
+                    add2total += num;
+                }
+                else
+                    add2total += self.downloaded[i];
+            }
+            self.downloaded = add2total;
+            cb(self.binary2hex(result), self.downloaded);
         });
     }
     set(piece, b) {

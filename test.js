@@ -1,9 +1,10 @@
 "use strict";
 const binary_bitfield_1 = require("./binary-bitfield");
-let bitfield = new binary_bitfield_1.default('c0', '40');
-let y = Buffer.from('40', 'hex');
+let bitfield = new binary_bitfield_1.default('c0');
+let y = Buffer.from('80', 'hex');
 bitfield.findNewPieces(y, (result, total) => {
+    console.log('b2: ', bitfield);
+    console.log('r2: ', result);
+    console.log('t2: ', total);
 });
-console.log(bitfield.set(0));
-console.log(bitfield);
-console.log(bitfield.get(1));
+console.log('b1: ', bitfield);
