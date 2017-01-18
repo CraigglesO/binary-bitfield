@@ -7,7 +7,8 @@ Most bitfield systems are very simplistic. This one allows you to:
 - Read the hex code or binary code (binary is more useful IMO)
 - Know how much you have downloaded
 - Keep track of how many pieces you have access to
-  - Know where 'rare' pieces exist easily
+  - Know where 'rare' pieces exist easily (ensure you can get all data)
+  - Know peers piece you need closes to index 0 (streaming)
   - Get quick access to the total amount of each piece
 - Handles Buffers or Hex-strings as input
 - Truly Async to not bog down your application.
