@@ -13,6 +13,8 @@ Most bitfield systems are very simplistic. This one allows you to:
 - Handles Buffers or Hex-strings as input
 - Truly Async to not bog down your application.
 
+* NEW : onHave function. Updates a peers hash with piece index
+
 
 binaryBitfield(pieces [, downloaded])
   - pieces: number of pieces total to download (number or Buffer or Hex String)
@@ -107,6 +109,9 @@ Convert a hex string to binary. This system reads the input at half byte (4 bit)
 
 `getPercentage(): number`
 Returns the current percentage downloaded.
+
+NEW `onHave(piece: number, bitfield: string | Buffer): string`
+Updates a peers hash with piece index and returns the new bitfield.
 
 
 ## ISC License (Open Source Initiative)
