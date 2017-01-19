@@ -110,7 +110,7 @@ Convert a hex string to binary. This system reads the input at half byte (4 bit)
 `getPercentage(): number`
 Returns the current percentage downloaded.
 
-NEW `onHave(piece: number, bitfield: string | Buffer): string`
+**NEW** `onHave(piece: number, bitfield: string | Buffer): string`
 Updates a peers hash with piece index and returns the new bitfield.
 
 

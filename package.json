@@ -1,6 +1,6 @@
 {
   "name": "binary-bitfield",
-  "version": "2.56.9",
+  "version": "3.12.9",
   "description": "Binary bitfield system to easily keep track of torrent pieces",
   "main": "binary-bitfield.js",
   "scripts": {
