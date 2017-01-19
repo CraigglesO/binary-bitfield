@@ -49,7 +49,7 @@ class binaryBitfield {
   pieces:        number
   bitfield:      string
   downloaded:    string
-  downloading:    string
+  downloading:   string
   totalBitfield: string
   percent:       number
   constructor (pieces: number | string | Buffer, downloaded?: number | string | Buffer) {
@@ -116,7 +116,7 @@ class binaryBitfield {
   }
 
   getPercentage(): number {
-    let p = this.downloading.slice(0, this.pieces);
+    let p = this.downloaded.slice(0, this.pieces);
     let oneCount = 0;
     for (let i = 0; i < p.length; i++){
       if (p[i] === '1')
@@ -208,13 +208,30 @@ class binaryBitfield {
         else
           add2total += self.totalBitfield[i];
       }
-      if (!type && earliest !== (-1))
+      let which = (-1);
+      if (!type && earliest !== (-1)) {
         self.set(earliest);
-      else if (type && rarest !== (-1))
+        which = earliest;
+      } else if (type && rarest !== (-1)) {
         self.set(rarest);
+        which = rarest;
+      }
       self.totalBitfield = add2total;
-      cb(result, self.downloading, rarest, earliest);
+      cb(result, self.downloading, which);
     });
+  }
+
+  onHave(piece: number, bitfield: string | Buffer): string {
+    const self = this;
+    if (Buffer.isBuffer(bitfield))
+      bitfield = bitfield.toString('hex');
+    // Set the number into the bitfield and return;
+    let bf = self.hex2binary(bitfield);
+    bf = bf.slice(0, piece) + '1' + bf.slice(piece +1);
+    let hex = self.binary2hex(bf);
+
+    // Return a string with the new bitfield size
+    return hex;
   }
 
   set(piece: number, b?: Boolean) {
@@ -236,7 +253,7 @@ class binaryBitfield {
     else
       this.downloaded = this.downloaded.slice(0, piece) + '0' + this.downloaded.slice(piece + 1);
     this.getPercentage();
-    return this.downloaded;
+    return this.percent;
   }
 
   getDownloaded(piece: number): Boolean {
