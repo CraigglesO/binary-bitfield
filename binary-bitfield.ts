@@ -48,11 +48,11 @@ class BinaryBitfield {
 
   pieces:        number;
   bitfield:      string;
-  downloaded:    string;
+  downloaded:    any;
   downloading:   string;
   totalBitfield: string;
   percent:       number;
-  constructor (pieces: number | string | Buffer, downloaded?: number | string | Buffer) {
+  constructor (pieces: any, downloaded?: any) {
     if (!(this instanceof BinaryBitfield))
       return new BinaryBitfield(pieces);
 
@@ -91,7 +91,7 @@ class BinaryBitfield {
     return result;
   }
 
-  d2binary(downloading): string {
+  d2binary(downloading: any ): string {
     if (Buffer.isBuffer(downloading))
       downloading = downloading.toString("hex");
     downloading = this.hex2binary(downloading);
@@ -154,14 +154,14 @@ class BinaryBitfield {
     return this.bitfield;
   }
 
-  isSeeder(bits: string | Buffer): Boolean {
+  isSeeder(bits: any): Boolean {
     if (Buffer.isBuffer(bits))
       bits = bits.toString("hex");
     bits = this.hex2binary(bits);
     return (this.bitfield === bits);
   }
 
-  findNewPieces(bits: string | Buffer, type: Boolean | Function, cb?: Function) {
+  findNewPieces(bits: any, type: Boolean | Function, cb?: Function) {
     if (typeof type === "function") {
       cb = type;
       type = false;
@@ -221,7 +221,7 @@ class BinaryBitfield {
     });
   }
 
-  onHave(piece: number, bitfield: string | Buffer): string {
+  onHave(piece: number, bitfield: any): string {
     const self = this;
     if (Buffer.isBuffer(bitfield))
       bitfield = bitfield.toString("hex");

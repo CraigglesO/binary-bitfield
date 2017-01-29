@@ -1,3 +1,3 @@
-import TPH = require("./binary-bitfield");
+import BinaryBitfield = require("./binary-bitfield");
 
-export = TPH;
+export = BinaryBitfield;

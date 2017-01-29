@@ -2,8 +2,6 @@ import binaryBitfield from "../binary-bitfield";
 import { Buffer } from "buffer";
 import * as test from "blue-tape";
 
-console.log('here');
-
 // let x = Buffer.from('c0', 'hex');
 // console.log(x);
 // let y = Buffer.from('40', 'hex');

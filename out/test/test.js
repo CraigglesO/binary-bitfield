@@ -2,7 +2,6 @@
 const binary_bitfield_1 = require("../binary-bitfield");
 const buffer_1 = require("buffer");
 const test = require("blue-tape");
-console.log('here');
 test("Get a prepared block", (t) => {
     t.plan(1);
     t.true(true);
