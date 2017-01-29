@@ -1,4 +1,11 @@
-# binary-bitfield
+# binary-bitfield [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
+
+[travis-image]: https://travis-ci.org/CraigglesO/binary-bitfield.svg?branch=master
+[travis-url]: https://travis-ci.org/oconnorct1/binary-bitfield
+[npm-image]: https://img.shields.io/npm/v/binary-bitfield.svg
+[npm-url]: https://npmjs.org/package/binary-bitfield
+[downloads-image]: https://img.shields.io/npm/dm/binary-bitfield.svg
+[downloads-url]: https://npmjs.org/package/binary-bitfield
 
 ### Binary bitfield system to easily keep track of torrent pieces
 
