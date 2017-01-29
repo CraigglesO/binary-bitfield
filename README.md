@@ -29,12 +29,12 @@ binaryBitfield(pieces [, downloaded])
 
 ## Install
 
-```
+``` typescript
 npm install binary-bitfield
 ```
 
 ## Usage
-```
+``` typescript
 import binaryBitfield from 'binary-bitfield';
 
 // Create bitfield with just a piece size:
