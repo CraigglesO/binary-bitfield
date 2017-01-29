@@ -2,6 +2,8 @@ import binaryBitfield from "../binary-bitfield";
 import { Buffer } from "buffer";
 import * as test from "blue-tape";
 
+console.log('here');
+
 // let x = Buffer.from('c0', 'hex');
 // console.log(x);
 // let y = Buffer.from('40', 'hex');
@@ -32,7 +34,6 @@ test("Get a prepared block", (t) => {
 
   t.end();
 });
-
 let bitfield = new binaryBitfield(3, "80");
 // let x = bitfield.setDownloaded(1);
 // console.log(bitfield);
