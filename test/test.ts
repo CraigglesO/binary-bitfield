@@ -1,5 +1,6 @@
-import binaryBitfield from './binary-bitfield';
-import { Buffer } from 'buffer';
+import binaryBitfield from "../binary-bitfield";
+import { Buffer } from "buffer";
+import * as test from "blue-tape";
 
 // let x = Buffer.from('c0', 'hex');
 // console.log(x);
@@ -22,9 +23,17 @@ import { Buffer } from 'buffer';
 // console.log(a);
 
 
-//let bitfield = new binaryBitfield(9);
+// let bitfield = new binaryBitfield(9);
 
-let bitfield = new binaryBitfield(3, '80');
+test("Get a prepared block", (t) => {
+  t.plan(1);
+
+  t.true( true );
+
+  t.end();
+});
+
+let bitfield = new binaryBitfield(3, "80");
 // let x = bitfield.setDownloaded(1);
 // console.log(bitfield);
 // console.log(x);
@@ -32,13 +41,13 @@ let bitfield = new binaryBitfield(3, '80');
 // console.log(bitfield);
 // console.log(x);
 
-let x = bitfield.onHave(1,Buffer.from('00', 'hex'));
+let x = bitfield.onHave(1, Buffer.from("00", "hex"));
 console.log(x);
- x = bitfield.onHave(1,'0000');
- x = bitfield.onHave(1,'0000');
+ x = bitfield.onHave(1, "0000");
+ x = bitfield.onHave(1, "0000");
 
- x = bitfield.onHave(1,'0000');
- x = bitfield.onHave(1,'0000');
+ x = bitfield.onHave(1, "0000");
+ x = bitfield.onHave(1, "0000");
 
 
 // let y = Buffer.from('06', 'hex');
