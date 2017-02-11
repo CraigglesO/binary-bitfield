@@ -150,6 +150,7 @@ class BinaryBitfield {
         let rarest = (-1);
         let lowNum = Infinity;
         let earliest = (-1);
+        let battle = (-1);
         let firstSet = false;
         if (buffer_1.Buffer.isBuffer(bits))
             bits = bits.toString("hex");
@@ -168,6 +169,9 @@ class BinaryBitfield {
                 }
                 else {
                     result += "0";
+                }
+                if (battle === (-1) && self.downloaded[i] === "0" && self.downloading[i] === "1" && bits[i] === "1") {
+                    battle = i;
                 }
                 if (bits[i] === "1") {
                     let num = Number(self.totalBitfield[i]);
@@ -189,6 +193,9 @@ class BinaryBitfield {
             else if (type && rarest !== (-1)) {
                 self.set(rarest);
                 which = rarest;
+            }
+            else if (battle !== (-1)) {
+                which = battle;
             }
             self.totalBitfield = add2total;
             cb(result, self.downloading, which);

@@ -172,6 +172,7 @@ class BinaryBitfield {
     let rarest    = (-1);
     let lowNum    = Infinity;
     let earliest  = (-1);
+    let battle    = (-1);
     let firstSet  = false;
     if (Buffer.isBuffer(bits))
       bits = bits.toString("hex");
@@ -180,9 +181,6 @@ class BinaryBitfield {
       bits += "00000000";
     }
     process.nextTick(() => {
-      // TODO:
-      // 1) rarest piece that user has
-      // 2) earliest peice that i need
       for (let i = 0; i < bits.length; i++) {
         // Check if user has a new piece that client does not have
         if (self.downloading[i] === "0" && bits[i] === "1") {
@@ -193,6 +191,11 @@ class BinaryBitfield {
           }
         } else {
           result += "0";
+        }
+
+        // In the wild, some peers are incredibly slow to upload. Peers are entitled to race them:
+        if (battle === (-1) && self.downloaded[i] === "0" && self.downloading[i] === "1" && bits[i] === "1") {
+          battle = i;
         }
 
         // Update total bitfield:
@@ -215,6 +218,8 @@ class BinaryBitfield {
       } else if (type && rarest !== (-1)) {
         self.set(rarest);
         which = rarest;
+      } else if (battle !== (-1)) {
+        which = battle;
       }
       self.totalBitfield = add2total;
       cb(result, self.downloading, which);
